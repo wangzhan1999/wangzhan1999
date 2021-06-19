@@ -9,7 +9,7 @@
     
     <title>
         
-            React-hooks-useCallback |
+            标签: jianli |
         
         Blog of Wangzhan
     </title>
@@ -121,105 +121,42 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="article-content-container">
-
-        <div class="article-title">
-            <span class="title-hover-animation">React-hooks-useCallback</span>
+    <div class="tag-container">
+        <div class="tag-name"><i class="fas fa-tag"></i>&nbsp;jianli
         </div>
-
-        
-            <div class="article-header">
-                <div class="avatar">
-                    <img src="/images/cute.jpg">
-                </div>
-                <div class="info">
-                    <div class="author">
-                        <span class="name">Wangzhan</span>
-                        
-                            <span class="author-label">Lv2</span>
-                        
-                    </div>
-                    <div class="meta-info">
-                        <div class="article-meta-info">
-    <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-06-07 14:43:04
-    </span>
+        <div class="tag-post-list">
+            
+<div class="archive-list-container">
     
-    
-        <span class="article-tags article-meta-item">
-            <i class="fas fa-tags"></i>&nbsp;
-            <ul>
+        <section class="archive-item">
+            <div class="archive-item-header">
+                <span class="archive-year">2021</span>
+                <span class="archive-year-post-count">[1]</span>
+            </div>
+            <ul class="article-list">
                 
-                    <li>
-                        <a href="/tags/React-Hooks/">React-Hooks</a>&nbsp;
+                    <li class="article-item">
+                        <a class="article-title"
+                           href="/2021/06/19/%E5%BC%A0%E6%84%89%E7%AE%80%E5%8E%86/"
+                        >张愉简历</a>
+                        <span class="article-date">06-19</span>
                     </li>
                 
             </ul>
-        </span>
-    
-
-    
-    
-    
+        </section>
     
 </div>
 
-                    </div>
-                </div>
-            </div>
-        
-
-        <div class="article-content markdown-body">
-            <h1 id="useCallbak"><a href="#useCallbak" class="headerlink" title="useCallbak"></a>useCallbak</h1><blockquote>
-<p>返回一个memoized（被记住的，备忘）的回调函数</p>
-</blockquote>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 官网示例</span></span><br><span class="line"><span class="keyword">const</span> memoizedCallbak = useCallback(</span><br><span class="line">	<span class="function">()=&gt;</span>&#123;</span><br><span class="line">        doSomething(a,b);</span><br><span class="line">    &#125;,</span><br><span class="line">    [a,b]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p>​        把内联回调函数及依赖项数组作为参数传入 <code>useCallback</code>，它将返回该回调函数的 memoized 版本，该回调函数仅在某个依赖项改变时才会更新。当你把回调函数传递给经过优化的并使用引用相等性去避免非必要渲染（例如 <code>shouldComponentUpdate</code>）的子组件时，它将非常有用。</p>
-<p><strong>在每一次渲染组件时返回的函数其实都是不一样的，使用<code>useCallback</code>包裹之后并添加依赖项的函数，只会在我们函数所需数据改变的时候才会重新为我们更新函数，否则会一直使用之前记住的那个函数，减少了一些不必要的渲染性能浪费</strong></p>
-
         </div>
+    </div>
 
-        
+    <div class="tag-paginator">
+        <div class="paginator">
+    
 
-        
-            <div class="article-nav">
-                
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2021/06/19/React-hook-useMemo/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">React-hook-useMemo</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
-                
-                    <div class="article-next">
-                        <a class="next"
-                           rel="next"
-                           href="/2021/06/06/React-hooks-useReducer/"
-                        >
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">React-hooks-useReducer</span>
-                                <span class="post-nav-item">下一篇</span>
-                            </span>
-                            <span class="right arrow-icon flex-center">
-                              <i class="fas fa-chevron-right"></i>
-                            </span>
-                        </a>
-                    </div>
-                
-            </div>
-        
+    
+</div>
 
-        
     </div>
 </div>
 
@@ -250,19 +187,6 @@
         </div>
     </div>
 
-    
-        <div class="post-tools">
-            <div class="post-tools-container">
-    <ul class="tools-list">
-        <!-- TOC aside toggle -->
-        
-
-        <!-- go comment -->
-        
-    </ul>
-</div>
-
-        </div>
     
 
     <div class="right-bottom-side-tools">

@@ -9,7 +9,7 @@
     
     <title>
         
-            React-hooks-useCallback |
+            React-hooks-useReducer |
         
         Blog of Wangzhan
     </title>
@@ -124,7 +124,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">React-hooks-useCallback</span>
+            <span class="title-hover-animation">React-hooks-useReducer</span>
         </div>
 
         
@@ -142,7 +142,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-06-07 14:43:04
+        <i class="fas fa-edit"></i>&nbsp;2021-06-06 15:22:34
     </span>
     
     
@@ -170,13 +170,15 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="useCallbak"><a href="#useCallbak" class="headerlink" title="useCallbak"></a>useCallbak</h1><blockquote>
-<p>返回一个memoized（被记住的，备忘）的回调函数</p>
+            <h1 id="useReducer"><a href="#useReducer" class="headerlink" title="useReducer"></a>useReducer</h1><blockquote>
+<p>这是一个额外的Hooks，在某些特殊场景可能会用到。</p>
 </blockquote>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 官网示例</span></span><br><span class="line"><span class="keyword">const</span> memoizedCallbak = useCallback(</span><br><span class="line">	<span class="function">()=&gt;</span>&#123;</span><br><span class="line">        doSomething(a,b);</span><br><span class="line">    &#125;,</span><br><span class="line">    [a,b]</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用方式</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用方式</span></span><br><span class="line"><span class="keyword">const</span> [state, dispatch] = useReducer(reducer, initialArg, init);</span><br><span class="line"><span class="comment">// 官网示例</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params">initialCount</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;<span class="attr">count</span>: initialCount&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reducer</span>(<span class="params">state, action</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;increment&#x27;</span>:</span><br><span class="line">      <span class="keyword">return</span> &#123;<span class="attr">count</span>: state.count + <span class="number">1</span>&#125;;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;decrement&#x27;</span>:</span><br><span class="line">      <span class="keyword">return</span> &#123;<span class="attr">count</span>: state.count - <span class="number">1</span>&#125;;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">&#x27;reset&#x27;</span>:</span><br><span class="line">      <span class="keyword">return</span> init(action.payload);</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Counter</span>(<span class="params">&#123;initialCount&#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [state, dispatch] = useReducer(reducer, initialCount, init);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;&gt;</span></span></span><br><span class="line"><span class="xml">      Count: &#123;state.count&#125;</span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">button</span></span></span></span><br><span class="line"><span class="tag"><span class="xml">        <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> dispatch(&#123;type: &#x27;reset&#x27;, payload: initialCount&#125;)&#125;&gt;</span></span><br><span class="line"><span class="xml">        Reset</span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> dispatch(&#123;type: &#x27;decrement&#x27;&#125;)&#125;&gt;-<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span> =&gt;</span> dispatch(&#123;type: &#x27;increment&#x27;&#125;)&#125;&gt;+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/&gt;</span></span></span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">Counter</span> <span class="attr">initialCount</span>=<span class="string">&#123;0&#125;/</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 返回参数详解: useReducer返回一个数组，包含两个数据一个是状态(也就是数据)，另一个则是一个dispatch函数，dispatch调用时要传入一个对象&#123;type: &quot;操作类型&quot;&#125;来执行不同的操作</span></span><br><span class="line"><span class="comment">// 传入参数详解 reducer这里接收一个纯函数，来根据我们调用dispatch时传入的不同操作类型来执行不同操作，第二个传参是默认数据，第三个参数init也是一个函数，可以用来将数据固定的格式化，官网示例中这里是用init来做一个数据初始化操作，将我们创建组件时给入的默认初始数据保存之后，点击按钮dispatch执行init操作</span></span><br><span class="line"><span class="comment">// 第三个形参可传可不传，如果你不需要将数据进行某种格式化操作的话</span></span><br></pre></td></tr></table></figure>
 
-<p>​        把内联回调函数及依赖项数组作为参数传入 <code>useCallback</code>，它将返回该回调函数的 memoized 版本，该回调函数仅在某个依赖项改变时才会更新。当你把回调函数传递给经过优化的并使用引用相等性去避免非必要渲染（例如 <code>shouldComponentUpdate</code>）的子组件时，它将非常有用。</p>
-<p><strong>在每一次渲染组件时返回的函数其实都是不一样的，使用<code>useCallback</code>包裹之后并添加依赖项的函数，只会在我们函数所需数据改变的时候才会重新为我们更新函数，否则会一直使用之前记住的那个函数，减少了一些不必要的渲染性能浪费</strong></p>
+<p><em>当我们操作的数据的方式需要多元化时，useState不能满足我们需求时候，useReducer提供给我们更多的数据的可操作性</em></p>
 
         </div>
 
@@ -188,13 +190,13 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/2021/06/19/React-hook-useMemo/"
+                           href="/2021/06/07/React-hooks-useCallback/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">React-hook-useMemo</span>
+                                <span class="post-nav-title-item">React-hooks-useCallback</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                         </a>
@@ -204,10 +206,10 @@
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2021/06/06/React-hooks-useReducer/"
+                           href="/2021/06/03/React-hooks-useContext/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">React-hooks-useReducer</span>
+                                <span class="post-nav-title-item">React-hooks-useContext</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">

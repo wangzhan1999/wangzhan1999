@@ -9,7 +9,7 @@
     
     <title>
         
-            React-hooks-useState |
+            React-hook-useMemo |
         
         Blog of Wangzhan
     </title>
@@ -124,7 +124,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">React-hooks-useState</span>
+            <span class="title-hover-animation">React-hook-useMemo</span>
         </div>
 
         
@@ -142,7 +142,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-05-25 08:20:13
+        <i class="fas fa-edit"></i>&nbsp;2021-06-19 19:10:18
     </span>
     
     
@@ -151,7 +151,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/React-Hooks/">React-Hooks</a>&nbsp;
+                        <a href="/tags/React-hook/">React-hook</a>&nbsp;
                     </li>
                 
             </ul>
@@ -170,23 +170,8 @@
         
 
         <div class="article-content markdown-body">
-            <h1 id="React-Hooks-useState"><a href="#React-Hooks-useState" class="headerlink" title="React-Hooks-useState"></a>React-Hooks-useState</h1><h2 id="Hooks是什么"><a href="#Hooks是什么" class="headerlink" title="Hooks是什么"></a>Hooks是什么</h2><blockquote>
-<p>Hooks 是让我们在React中编写function组件时，能运用一些 React x16.8之前function组件无法完成的事情。例如：React中function组件不能拥有自己的状态，无法实现生命周期等等。</p>
-</blockquote>
-<h2 id="爲什麽使用Hooks"><a href="#爲什麽使用Hooks" class="headerlink" title="爲什麽使用Hooks"></a>爲什麽使用Hooks</h2><blockquote>
-<p>在我們生產中，會產生非常多的高階組件嵌套，而形成嵌套地獄，如 providers，consumers，高阶组件，render props，這讓代碼非常不容易理解。爲了一些數據的傳遞我們使用高階組件為組件增加props，這會使class組件需要重新組織組件結構。并且一些邏輯代碼需要寫在類組件中，比如，生命周期函數，和一些訂閲事件。舉個簡單例子，大家可以對比一下代碼量和易理解程度</p>
-</blockquote>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// class組件</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Count</span> <span class="keyword">extends</span> <span class="title">Component</span></span>&#123;</span><br><span class="line">  <span class="function"><span class="title">constructor</span>(<span class="params">props</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">super</span>(props);</span><br><span class="line">    <span class="built_in">this</span>.state = &#123;</span><br><span class="line">      <span class="attr">counts</span>: <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="title">render</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;counts&#125; = <span class="built_in">this</span>.state;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;counts&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span>=&gt;</span>this.increment()&#125;&gt;+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span>=&gt;</span>this.decrement()&#125;&gt;-<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  decrement = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">      <span class="attr">counts</span>: <span class="built_in">this</span>.state.counts-<span class="number">1</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  increment = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">      <span class="attr">counts</span>: <span class="built_in">this</span>.state.counts+<span class="number">1</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 使用hook</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Count</span>(<span class="params">props</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [counts, setCounts] = useState(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">return</span>(</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>&#123;counts&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span>=&gt;</span>setCounts(counts+1)&#125;&gt;+<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span>=&gt;</span>setCounts(counts-1)&#125;&gt;-<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>在16.8版本之前React中function組件是不能有自己的狀態的，因爲每次渲染函數式組件(function component) 時，函數内部的變量會重新初始化，所以無法保存</p>
-</li>
-<li><p> useState提供了一種可以保存函數式組件狀態的方式</p>
-</li>
-<li><p>useState(initialState) 使用時傳入一個狀態初始值，會返回給第一個變量</p>
-</li>
-<li><p>useState返回的是一個數組包含兩個元素第一個是狀態信息，第二個是用來操作這個狀態的set方法</p>
-</li>
-</ul>
+            <h1 id="React-hook-useMemo"><a href="#React-hook-useMemo" class="headerlink" title="React-hook-useMemo"></a>React-hook-useMemo</h1><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 语法</span></span><br><span class="line"><span class="keyword">const</span> memoizedValue = useMemo( <span class="function">() =&gt;</span> computeExpensiveValue(a,b), [a,b]);</span><br></pre></td></tr></table></figure>
+
 
         </div>
 
@@ -198,18 +183,33 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/2021/05/29/React-hooks-useEffect/"
+                           href="/2021/06/19/%E5%BC%A0%E6%84%89%E7%AE%80%E5%8E%86/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">React-hooks-useEffect</span>
+                                <span class="post-nav-title-item">张愉简历</span>
                                 <span class="post-nav-item">上一篇</span>
                             </span>
                         </a>
                     </div>
                 
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/06/07/React-hooks-useCallback/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">React-hooks-useCallback</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
                 
             </div>
         
